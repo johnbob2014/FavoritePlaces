@@ -47,13 +47,22 @@
                             </segmentedControl>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="ono-VJ-RgW"/>
-                            <barButtonItem systemItem="action" id="ydP-rL-bKn"/>
+                            <barButtonItem systemItem="add" id="ono-VJ-RgW">
+                                <connections>
+                                    <action selector="addAction:" destination="BYZ-38-t0r" id="dM8-Ak-PVy"/>
+                                    <segue destination="jrK-Ra-Qka" kind="show" identifier="addFavoritePlace" id="Qeq-Rx-ldC"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="ydP-rL-bKn">
+                                <connections>
+                                    <action selector="currentAction:" destination="BYZ-38-t0r" id="TMx-2l-7Mg"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="0ak-7i-Bjm" id="GAE-rp-u3D"/>
-                        <segue destination="jrK-Ra-Qka" kind="show" id="z1c-yk-uxi"/>
+                        <segue destination="jrK-Ra-Qka" kind="show" identifier="showFavoritePlaceDetail" id="z1c-yk-uxi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -259,4 +268,7 @@
             <point key="canvasLocation" x="393" y="1003"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="z1c-yk-uxi"/>
+    </inferredMetricsTieBreakers>
 </document>
