@@ -1,0 +1,29 @@
+//
+//  FavoritePlaces-PrefixHeader.pch
+//  FavoritePlaces-Chapter02
+//
+//  Created by 张保国 on 16/5/12.
+//  Copyright © 2016年 ZhangBaoGuo. All rights reserved.
+//
+
+#ifndef FavoritePlaces_PrefixHeader_pch
+#define FavoritePlaces_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Availability.h>
+
+#ifdef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
+#define kAppDelegate ((AppDelegate *) [[UIApplication sharedApplication] delegate])
+#endif
+
+#endif /* FavoritePlaces_PrefixHeader_pch */

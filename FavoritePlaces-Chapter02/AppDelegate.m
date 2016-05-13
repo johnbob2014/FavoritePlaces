@@ -2,11 +2,12 @@
 //  AppDelegate.m
 //  FavoritePlaces-Chapter02
 //
-//  Created by 张保国 on 16/5/13.
+//  Created by 张保国 on 16/5/11.
 //  Copyright © 2016年 ZhangBaoGuo. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "GCLocationManager.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        GCLocationManager *appLocationManager=[GCLocationManager sharedLocationManager];
+        [appLocationManager.locationManager startUpdatingLocation];
+        
+        NSLog(@"%@",appLocationManager.locationManager);
+    }else{
+        NSLog(@"Location Services disabled.");
+    }
+    
     return YES;
 }
 
@@ -60,7 +71,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"FavoritePlaces_Chapter02" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"FavoritePlaces" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -74,7 +85,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FavoritePlaces_Chapter02.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"FavoritePlaces.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
