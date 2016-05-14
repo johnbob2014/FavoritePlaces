@@ -10,30 +10,43 @@
 
 @implementation GCFavoritePlace
 
--(CLLocationCoordinate2D)coordinate{
+- (CLLocationCoordinate2D)coordinate
+{
+    CLLocationDegrees lat =
+    [[self valueForKeyPath:@"latitude"] doubleValue];
     
-    CLLocationDegrees lat=[[self valueForKeyPath:@"latitude"] doubleValue];
-    CLLocationDegrees lon=[[self valueForKeyPath:@"longitude"] doubleValue];
-    CLLocationCoordinate2D coord=CLLocationCoordinate2DMake(lat, lon);
+    CLLocationDegrees lon =
+    [[self valueForKeyPath:@"longitude"] doubleValue];
+    
+    CLLocationCoordinate2D coord =
+    CLLocationCoordinate2DMake(lat, lon);
+    
     return coord;
+}
+
+- (void)setCoordinate:(CLLocationCoordinate2D)newCoordinate
+{
+    [self setValue:@(newCoordinate.latitude)
+        forKeyPath:@"latitude"];
     
+    [self setValue:@(newCoordinate.longitude)
+        forKeyPath:@"longitude"];
 }
 
--(void)setCoordinate:(CLLocationCoordinate2D)newCoordinate{
-    [self setValue:@(newCoordinate.latitude) forKeyPath:@"latitude"];
-    [self setValue:@(newCoordinate.longitude) forKeyPath:@"longitude"];
-}
-
--(NSString *)title{
+- (NSString *)title
+{
     return [self valueForKeyPath:@"placeName"];
 }
 
--(NSString *)subtitle{
-    NSString *subtitleString=@"";
+- (NSString *)subtitle
+{
+    NSString *subtitleString = @"";
     
-    NSString *addressString=[self valueForKeyPath:@"placeStreetAddress"];
+    NSString *addressString =
+    [self valueForKeyPath:@"placeStreetAddress"];
     
-    if ([addressString length] > 0) {
+    if ([addressString length] > 0)
+    {
         NSString *addr =
         [self valueForKeyPath:@"placeStreetAddress"];
         
@@ -48,21 +61,23 @@
     return subtitleString;
 }
 
--(MKMapRect)boundingMapRect{
+- (MKMapRect)boundingMapRect
+{
     float metersPerDegreeLat = 111111.0f;
     float radiusMeters = [[self valueForKeyPath:@"displayRadius"] floatValue];
-    CLLocationDegrees delta=radiusMeters/metersPerDegreeLat;
-    CLLocationDegrees originLatitude=self.coordinate.latitude - delta;
-    CLLocationDegrees originLongitude=self.coordinate.longitude - delta;
+    CLLocationDegrees delta = radiusMeters / metersPerDegreeLat;
+    CLLocationDegrees originLatitude = self.coordinate.latitude - delta;
+    CLLocationDegrees originLongitude = self.coordinate.longitude - delta;
     
-    CLLocationCoordinate2D newOrigin=CLLocationCoordinate2DMake(originLatitude, originLongitude);
+    CLLocationCoordinate2D newOrigin = CLLocationCoordinate2DMake(originLatitude, originLongitude);
     
-    MKMapPoint originMapPoint=MKMapPointForCoordinate(newOrigin);
+    MKMapPoint originMapPoint = MKMapPointForCoordinate(newOrigin);
     
-    double mapPoints=MKMapPointsPerMeterAtLatitude(self.coordinate.latitude) * radiusMeters;
+    double mapPoints = MKMapPointsPerMeterAtLatitude(self.coordinate.latitude) * radiusMeters;
     
-    MKMapRect boundingRect=MKMapRectMake(originMapPoint.x, originMapPoint.y, mapPoints, mapPoints);
+    MKMapRect boundingRect = MKMapRectMake(originMapPoint.x, originMapPoint.y, mapPoints, mapPoints);
     
     return boundingRect;
 }
+
 @end

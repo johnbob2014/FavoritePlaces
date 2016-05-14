@@ -17,6 +17,9 @@
 		1E4426C71CE5F5830027285E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E4426C61CE5F5830027285E /* Main.storyboard */; };
 		1E4426D01CE5F68B0027285E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4426CF1CE5F68B0027285E /* AppDelegate.m */; };
 		1E4426D31CE5F8500027285E /* FavoritePlaces.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E4426D11CE5F8500027285E /* FavoritePlaces.xcdatamodeld */; };
+		1EE8C5C01CE72F510045C180 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE8C5BF1CE72F510045C180 /* CoreLocation.framework */; };
+		1EE8C5C21CE72F590045C180 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE8C5C11CE72F590045C180 /* MapKit.framework */; };
+		1EE8C5C41CE72F610045C180 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EE8C5C31CE72F610045C180 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		1E4426CE1CE5F68B0027285E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1E4426CF1CE5F68B0027285E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1E4426D21CE5F8500027285E /* FavoritePlaces.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritePlaces.xcdatamodel; sourceTree = "<group>"; };
+		1EE8C5BF1CE72F510045C180 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1EE8C5C11CE72F590045C180 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1EE8C5C31CE72F610045C180 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE8C5C41CE72F610045C180 /* CoreData.framework in Frameworks */,
+				1EE8C5C21CE72F590045C180 /* MapKit.framework in Frameworks */,
+				1EE8C5C01CE72F510045C180 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +63,9 @@
 		1E4426931CE5F1A10027285E = {
 			isa = PBXGroup;
 			children = (
+				1EE8C5C31CE72F610045C180 /* CoreData.framework */,
+				1EE8C5C11CE72F590045C180 /* MapKit.framework */,
+				1EE8C5BF1CE72F510045C180 /* CoreLocation.framework */,
 				1E44269E1CE5F1A10027285E /* FavoritePlaces-Chapter02 */,
 				1E44269D1CE5F1A10027285E /* Products */,
 			);
@@ -322,6 +334,7 @@
 				1E4426B81CE5F1A10027285E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

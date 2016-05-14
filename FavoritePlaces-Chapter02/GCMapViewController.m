@@ -89,6 +89,7 @@
     }
     
     NSFetchRequest *placesRequest=[[NSFetchRequest alloc] initWithEntityName:@"FavoritePlace"];
+    [placesRequest setReturnsObjectsAsFaults:NO];
     NSManagedObjectContext *moc=kAppDelegate.managedObjectContext;
     NSError *error=nil;
     NSArray *places=[moc executeFetchRequest:placesRequest error:&error];
@@ -97,6 +98,18 @@
         NSLog(@"Core Data fetch error %@, %@", error,[error userInfo]);
     }
     
+//    NSLog(@"FavoritePalce count: %ld",(long)[places count]);
+//    [places enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        GCFavoritePlace *place=(GCFavoritePlace *) obj;
+//        NSLog(@"%@",place);
+//        //NSLog(@"%f,%f", place.coordinate.latitude,place.coordinate.longitude);
+//        if ([place respondsToSelector:@selector(coordinate)]) {
+//            
+//            [self.mapView addAnnotation:place];
+//            NSLog(@"Add An Annotation: %@",place);
+//        }
+// 
+//    } ];
     [self.mapView addAnnotations:places];
     
     for (GCFavoritePlace *favPlace in places) {
@@ -167,6 +180,8 @@
     //        [self dismissViewControllerAnimated:YES completion:nil];
     //    }
     
+    [controller dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
     [self updateMapAnnotations];
     [self zoomMapToFitAnnotations];
 }
@@ -205,6 +220,7 @@
 
 #pragma mark - Navigation
 - (IBAction)addAction:(id)sender {
+    
     [self performSegueWithIdentifier:@"addFavoritePlace" sender:sender];
 }
 
